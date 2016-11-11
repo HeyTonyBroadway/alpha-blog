@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 	before_action :set_article, only: [:edit, :update, :show, :destroy]
 
 	def index
-		@articles = Article.all
+		@articles = Article.paginate(page: params[:page], per_page: 5)
 	end
 
 	def new
@@ -14,10 +14,10 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		debugger
+		# debugger #I would put this if I want to use the byebug gem
 		#render plain: params[:article].inspect
 		@article = Article.new(article_params)
-		@article.user = User.first #hard code the user
+		@article.user = User.find(7) #hard code the user
 
 		if @article.save
 			flash[:success] = "Article was successfully created!"
