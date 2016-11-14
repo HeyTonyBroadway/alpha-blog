@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 		# debugger #I would put this if I want to use the byebug gem
 		#render plain: params[:article].inspect
 		@article = Article.new(article_params)
-		 @article.user_id = current_user.id #hard code the user
+		 @article.user = current_user #hard code the user
 
 		if @article.save
 			flash[:success] = "Article was successfully created!"
