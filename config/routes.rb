@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about', to: 'pages#about'
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
   resources :articles
   get 'signup', to: 'users#new'
   # post 'users', to: 'users#create' #this gives the users_path
