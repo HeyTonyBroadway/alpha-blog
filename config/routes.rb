@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # post 'users', to: 'users#create' #this gives the users_path
   resources :users, except: [:new]
 
+  resources :categories, except: [:destroy]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
